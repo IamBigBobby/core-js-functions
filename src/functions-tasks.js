@@ -72,7 +72,7 @@ function getArgumentsCount(funcs) {
  */
 function getPowerFunction(exponent) {
   return function power(x) {
-    return x ** exponent; // Используем оператор ** для возведения в степень
+    return x ** exponent;
   };
 }
 
@@ -89,8 +89,17 @@ function getPowerFunction(exponent) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...params) {
+  if (params.length === 1) {
+    return () => params[0];
+  }
+  if (params.length === 2) {
+    return (x) => params[0] * x + params[1];
+  }
+  if (params.length === 3) {
+    return (x) => params[0] * x ** 2 + params[1] * x + params[2];
+  }
+  return null;
 }
 
 /**
